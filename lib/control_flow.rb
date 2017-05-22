@@ -2,19 +2,36 @@
 
 # Return the argument with all its lowercase characters removed.
 def destructive_uppercase(str)
-
+  result = ""
+  (0...str.length).each do |idx|
+    result << str[idx] if str[idx] != str[idx].downcase
+  end
+  result
 end
 
 # Return the middle character of a string. Return the middle two characters if
 # the word is of even length, e.g. middle_substring("middle") => "dd",
 # middle_substring("mid") => "i"
 def middle_substring(str)
+  middle_left = str.length / 2
+  middle_right = middle_left - 1
+  if str.length % 2 == 0
+    return "#{str[middle_right]}#{str[middle_left]}"
+  else
+    return "#{str[middle_left]}"
+  end
 end
 
 # Return the number of vowels in a string.
 VOWELS = %w(a e i o u)
 def num_vowels(str)
-
+  count = 0
+  str.each_char do |letter|
+    if VOWELS.include?(letter)
+      count += 1
+    end
+  end
+  count
 end
 
 # Return the factoral of the argument (num). A number's factorial is the product
